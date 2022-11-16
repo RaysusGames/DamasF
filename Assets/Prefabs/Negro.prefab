@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 6175318534246885074}
   - component: {fileID: 4472297848055785063}
   m_Layer: 0
-  m_Name: Tile
+  m_Name: Negro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -161,8 +161,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: edf0596bbf6a3ad48b6b947ec0b7bed7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -185,10 +184,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ed9b12545b2d1042bbf48fa63839685, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorA: {fileID: 21300000, guid: 5f8f6bd06b8bc5041a74e9977703d2a5, type: 3}
-  colorB: {fileID: 21300000, guid: edf0596bbf6a3ad48b6b947ec0b7bed7, type: 3}
   sRend: {fileID: 8161298383120083783}
   higtlight: {fileID: 1958070000395655349}
+  ocupiedUnit: {fileID: 0}
+  isWalkeable: 1
 --- !u!61 &4472297848055785063
 BoxCollider2D:
   m_ObjectHideFlags: 0

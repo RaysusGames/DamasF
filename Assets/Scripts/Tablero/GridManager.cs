@@ -4,12 +4,26 @@ using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
+    public static GridManager instance;
+
     [SerializeField] int width;
     [SerializeField] int height;
-    [SerializeField] private Tile tile;
+    [SerializeField] private Tile grassTile,stoneTile;
     [SerializeField] private Transform cam;
+    [SerializeField]GameObject [,] grid;
 
 
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     private void Start()
     {
         GenerateGrid();
@@ -19,27 +33,38 @@ public class GridManager : MonoBehaviour
 
     void GenerateGrid()
     {
+        grid = new GameObject[width, height];
         for (int y = 0; y < height; y++)
         {
             for (int x = 0; x < width; x++)
             {
-                Tile t = Instantiate(tile, new Vector3(x, y), Quaternion.identity);
-                t.name = $"Tile{x} {y}";
-
-                bool isOffset;
-                if ((x % 2 ==0 && y % 2 !=0) || (x%2 !=0 && y%2 == 0))
+                Tile rendTile;
+              /*  if (Random.Range(0, 6) == 3)
                 {
-                    isOffset = true;
+                    rendTile = stoneTile;
+
                 }
                 else
                 {
-                    isOffset = false;
-                }
-
-                t.Tileinit(isOffset);
+                    rendTile = grassTile;
+                }*/
+                Tile t = Instantiate(grassTile, new Vector3(x, y), Quaternion.identity);
+                t.Tileinit(x, y);
+                grid[x, y] = t.gameObject;
             }
         }
         cam.transform.position = new Vector3((float)width / 2 - 0.5f, (float)height / 2 - 05f, -10);
+    }
+
+    public Tile GetTile(int x , int y)
+    {
+        Tile t = null;
+        if (grid[x,y]!= null)
+        {
+            t = grid[x, y].GetComponent<Tile>();
+            
+        }
+        return t;
     }
 
 

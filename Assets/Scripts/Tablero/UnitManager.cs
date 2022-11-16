@@ -6,17 +6,12 @@ public class UnitManager : MonoBehaviour
 {
     public static UnitManager insatance;
 
-    [SerializeField] private GameObject selectTile = null;
+    [SerializeField] private AllyUnit allyUnit;
+    [SerializeField] private EnemygUnit enemyUnit;
 
-    public GameObject GetSelecttile()
-    {
-        return this.selectTile;
-    }
-    public void setSelectTile(GameObject tile)
-    {
-        this.selectTile = tile;
+    [SerializeField] private BaseUnit selectedUnit = null;
 
-    }
+
 
     private void Awake()
     {
@@ -29,4 +24,27 @@ public class UnitManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    private void Start()
+    {
+        SpawnUnits();
+    }
+    public BaseUnit GetSelectedUnit()
+    {
+        return this.selectedUnit;
+    }
+
+    public void SetSelectedUnit(BaseUnit unit)
+    {
+        this.selectedUnit = unit;
+    }
+    public void SpawnUnits()
+    {
+        AllyUnit u1 = Instantiate(allyUnit);
+        GridManager.instance.GetTile(0, 0).SetUnit(u1);
+
+
+       EnemygUnit e1 = Instantiate(enemyUnit);
+        GridManager.instance.GetTile(7, 7).SetUnit(e1);
+    }
+
 }
