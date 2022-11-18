@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6,
     type: 3}
   m_Color: {r: 0.9811321, g: 0.928563, b: 0.06016379, a: 0.5803922}
@@ -161,15 +161,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5f8f6bd06b8bc5041a74e9977703d2a5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e9dfc7cdb1e36744abec2ebb6316e3f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.015625, y: 1.015625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &4472297848055785063
@@ -189,8 +189,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 1.015625, y: 1.015625}
+    newSize: {x: 1.015625, y: 1.015625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -214,5 +214,5 @@ MonoBehaviour:
   higtlight: {fileID: 1958070000395655349}
   ocupiedUnit: {fileID: 0}
   isWalkeable: 1
-  colorA: {fileID: 21300000, guid: 5f8f6bd06b8bc5041a74e9977703d2a5, type: 3}
-  colorB: {fileID: 21300000, guid: edf0596bbf6a3ad48b6b947ec0b7bed7, type: 3}
+  colorA: {fileID: 21300000, guid: c6a50c098c77881479d054ffa4fd24c0, type: 3}
+  colorB: {fileID: 21300000, guid: ddd062d8c827d2140b575357b626e950, type: 3}
