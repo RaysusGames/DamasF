@@ -7,7 +7,8 @@ public class Movimiento : MonoBehaviour
    [SerializeField] protected float moveSpeed;
     [SerializeField] protected Rigidbody2D rb ;
     [SerializeField] protected GameObject bullet;
-    
+    [SerializeField] protected Transform aimPos;
+    [SerializeField] protected float hp;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +20,14 @@ public class Movimiento : MonoBehaviour
     {
         
     }
-
+    public float getHp()
+    {
+        return this.hp;
+    }
+    public void setHp(float damage)
+    {
+        this.hp = damage;
+    }
     public Movimiento()
     {
         
@@ -31,15 +39,7 @@ public class Movimiento : MonoBehaviour
     }
     protected virtual void Move()
     {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            
-            rb.AddForce(new Vector2(0,1)*moveSpeed * Time.deltaTime);
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            rb.AddForce(new Vector2(0, -1) * moveSpeed* Time.deltaTime);
-        }
+      
     }
     protected virtual void Shoot()
     {
