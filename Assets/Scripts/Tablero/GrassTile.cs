@@ -9,6 +9,7 @@ public class GrassTile : Tile
 
     public override void Tileinit (int x , int y)
     {
+        base.Tileinit(x, y);
         bool isOffset;
         if ((x+y)%2 == 1)
         {

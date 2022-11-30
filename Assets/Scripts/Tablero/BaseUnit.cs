@@ -6,7 +6,27 @@ public class BaseUnit : MonoBehaviour
 {
     [SerializeField] protected Tile ocupiedTile;
     [SerializeField] protected Enums.Faction faction;
+    [SerializeField] protected List<Vector2> possibleMoves;
 
+
+
+
+    public void AddPosibleMove(Vector2 Posibility)
+    {
+        possibleMoves.Add(Posibility);
+    }
+
+    public List<Vector2> GetPosibleMove()
+    {
+        return this.possibleMoves;
+    }
+    public void ShowPossibleMove()
+    {
+        foreach (Vector2 V2 in possibleMoves)
+        {
+            Debug.Log(V2);
+        }
+    }
     public Tile GetOccupiedTile()
     {
         return this.ocupiedTile;

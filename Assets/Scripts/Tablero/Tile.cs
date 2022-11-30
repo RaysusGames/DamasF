@@ -11,14 +11,25 @@ public class Tile : MonoBehaviour
     [SerializeField] protected BaseUnit ocupiedUnit;
     [SerializeField] protected bool isWalkeable;
     [SerializeField] protected bool yourTurn,player2On;
+
+    [SerializeField] protected int xPos;
+    [SerializeField] protected int yPos;
+
     private void Start()
     {
         yourTurn = true;
         player2On = false;   
     }
+
+    public void ShowPosition()
+    {
+        Debug.Log(xPos + " " + yPos);
+    }
+
     public virtual void Tileinit(int x,int y)
     {
-        
+        xPos = x;
+        yPos = y;
     }
     public void Setyourturn(bool youTurna)
     {
@@ -41,6 +52,9 @@ public class Tile : MonoBehaviour
         //Player1
         if (ocupiedUnit != null && yourTurn )
         {
+            GridManager.instance.UnitArraund(xPos, yPos);
+            //ocupiedUnit.ShowPossibleMove();
+            //Si la unidad que estaocuapando el tile es del tipo ally
             if (ocupiedUnit.GetFaction()== Enums.Faction.Ally)
             {
                
@@ -48,7 +62,7 @@ public class Tile : MonoBehaviour
             }
             else
             {
-                
+                //Si la unidad seleccionada es distinta de null
                 if (UnitManager.insatance.GetSelectedUnit() != null)
                 {
                     Destroy(ocupiedUnit.gameObject);
@@ -82,6 +96,7 @@ public class Tile : MonoBehaviour
 
         if (ocupiedUnit != null && player2On)
         {
+            //Si la unidad que estaocuapando el tile es del tipo ally
             if (ocupiedUnit.GetFaction() == Enums.Faction.Enemy)
             {
 
@@ -89,7 +104,7 @@ public class Tile : MonoBehaviour
             }
             else
             {
-
+                //Si la unidad seleccionada es distinta de null
                 if (UnitManager.insatance.GetSelectedUnit() != null)
                 {
                     Destroy(ocupiedUnit.gameObject);
