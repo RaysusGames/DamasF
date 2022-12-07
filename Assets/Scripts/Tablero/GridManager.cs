@@ -169,31 +169,87 @@ public class GridManager : MonoBehaviour
         }
 
 
-       
 
-        
+
+
         //// Infe Der
-   
 
-        //if (IsInsideGrid(x + 1, y - 1) && grid[x + 1, y - 1].GetComponent<BaseUnit>().GetOccupiedTile() != null)
-        //{
 
-        //}
+        if (IsInsideGrid(x + 1, y))
+        {
+            //Si la casilla esta ocupada por una ficha enemiga
+            if (grid[x + 1, y -1].GetComponent<Tile>().GetOccupiedUnit() != null && grid[x + 1, y - 1].GetComponent<Tile>().GetOccupiedUnit().GetFaction() == Enums.Faction.Enemy)
+            {
+                //Agregar posible movimiento de la ficha
+                grid[x, y].GetComponent<Tile>().GetOccupiedUnit().AddPosibleMove(new Vector2(x + 2, y - 2));
+            }
+            //Si la casiila esta vacia
+            else if (grid[x + 1, y - 1].GetComponent<Tile>().GetOccupiedUnit() == null)
+            {
+                //Agregar posible movimiento de la ficha
+                grid[x, y].GetComponent<Tile>().GetOccupiedUnit().AddPosibleMove(new Vector2(x + 1, y - 1));
+            }
+        }
+
+
+
         //// Mid Down
-        //if (IsInsideGrid(x, y - 1) && grid[x, y - 1].GetComponent<BaseUnit>().GetOccupiedTile() != null)
-        //{
+        ///
+        if (IsInsideGrid(x + 1, y))
+        {
+            //Si la casilla esta ocupada por una ficha enemiga
+            if (grid[x,y-1].GetComponent<Tile>().GetOccupiedUnit() != null && grid[x, y - 1].GetComponent<Tile>().GetOccupiedUnit().GetFaction() == Enums.Faction.Enemy)
+            {
+                //Agregar posible movimiento de la ficha
+                grid[x, y].GetComponent<Tile>().GetOccupiedUnit().AddPosibleMove(new Vector2(x , y - 2));
+            }
+            //Si la casiila esta vacia
+            else if (grid[x, y - 1].GetComponent<Tile>().GetOccupiedUnit() == null)
+            {
+                //Agregar posible movimiento de la ficha
+                grid[x, y].GetComponent<Tile>().GetOccupiedUnit().AddPosibleMove(new Vector2(x, y - 1));
+            }
+        }
 
-        //}
+
+
         ////Infe Izq
-        //if (IsInsideGrid(x - 1, y - 1) && grid[x - 1, y - 1].GetComponent<BaseUnit>().GetOccupiedTile() != null)
-        //{
+        ///
+        if (IsInsideGrid(x + 1, y))
+        {
+            //Si la casilla esta ocupada por una ficha enemiga
+            if (grid[x-1, y - 1].GetComponent<Tile>().GetOccupiedUnit() != null && grid[x - 1, y - 1].GetComponent<Tile>().GetOccupiedUnit().GetFaction() == Enums.Faction.Enemy)
+            {
+                //Agregar posible movimiento de la ficha
+                grid[x, y].GetComponent<Tile>().GetOccupiedUnit().AddPosibleMove(new Vector2(x-2, y - 2));
+            }
+            //Si la casiila esta vacia
+            else if (grid[x - 1, y - 1].GetComponent<Tile>().GetOccupiedUnit() == null)
+            {
+                //Agregar posible movimiento de la ficha
+                grid[x, y].GetComponent<Tile>().GetOccupiedUnit().AddPosibleMove(new Vector2(x - 1, y - 1));
+            }
+        }
 
-        //}
+
         ////Mid Izq
-        //if (IsInsideGrid(x - 1, y) && grid[x - 1, y].GetComponent<BaseUnit>().GetOccupiedTile() != null)
-        //{
+        ///
+        if (IsInsideGrid(x + 1, y))
+        {
+            //Si la casilla esta ocupada por una ficha enemiga
+            if (grid[x - 1, y ].GetComponent<Tile>().GetOccupiedUnit() != null && grid[x - 1, y].GetComponent<Tile>().GetOccupiedUnit().GetFaction() == Enums.Faction.Enemy)
+            {
+                //Agregar posible movimiento de la ficha
+                grid[x, y].GetComponent<Tile>().GetOccupiedUnit().AddPosibleMove(new Vector2(x - 2, y ) );
+            }
+            //Si la casiila esta vacia
+            else if (grid[x - 1, y - 1].GetComponent<Tile>().GetOccupiedUnit() == null)
+            {
+                //Agregar posible movimiento de la ficha
+                grid[x, y].GetComponent<Tile>().GetOccupiedUnit().AddPosibleMove(new Vector2(x - 1, y));
+            }
+        }
 
-        //}
     }
 
 

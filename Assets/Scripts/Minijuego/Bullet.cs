@@ -18,6 +18,20 @@ public class Bullet : MonoBehaviour
         rb.AddForce(new Vector2(1, 0) * speed * Time.deltaTime);
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("EnemyBullet"))
+        {
+            collision.gameObject.GetComponent<Player2>().setHp(1);
+            Destroy(this.gameObject);
+        }
+        if (collision.gameObject.CompareTag("PlayerBullet"))
+        {
+            collision.gameObject.GetComponent<Player1>().setHp(1);
+            Destroy(this.gameObject);
+        }
+    }
+
 
 
 }

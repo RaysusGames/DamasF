@@ -464,7 +464,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -369.7, y: -66.9}
+  m_AnchoredPosition: {x: -150, y: 362}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &294749683
@@ -1102,12 +1102,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: 1747f2c6f9999e94981812813944b56e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 659fbda2d70adea4d87db8b95cea8550, type: 3}
   m_Color: {r: 0, g: 1, b: 0.9712162, a: 0.46666667}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 25.6, y: 14.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1283,7 +1283,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a46cab8625b74bb4480964f2b8854a1e, type: 2}
   m_sharedMaterial: {fileID: 1355815013939339356, guid: a46cab8625b74bb4480964f2b8854a1e,
@@ -1561,7 +1561,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 380.4, y: -66.9}
+  m_AnchoredPosition: {x: 164, y: 358}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &987151575
@@ -2246,7 +2246,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   bullet: {fileID: 7722643838649288204, guid: 1808adda1fe890d489d31d4d47411648, type: 3}
   aimPos: {fileID: 1170627816}
-  hp: 0
+  hp: 1
+  hpText: {fileID: 1921122043}
 --- !u!212 &1361078965
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2354,7 +2355,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1639544713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2535,10 +2536,9 @@ GameObject:
   - component: {fileID: 1704303014}
   - component: {fileID: 1704303013}
   - component: {fileID: 1704303015}
-  - component: {fileID: 1704303016}
   m_Layer: 6
   m_Name: Player 2
-  m_TagString: Untagged
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2648,8 +2648,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   bullet: {fileID: 7722643838649288204, guid: 0efd8d42f021248488e21d9c2337c6c5, type: 3}
   aimPos: {fileID: 638108689}
-  hp: 0
-  bulletA: {fileID: 0}
+  hp: 1
+  hpText: {fileID: 546417985}
 --- !u!58 &1704303015
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2666,32 +2666,6 @@ CircleCollider2D:
   m_Offset: {x: 0.00000023841858, y: 0}
   serializedVersion: 2
   m_Radius: 0.4
---- !u!61 &1704303016
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1704303010}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.03243406, y: -1.5472429}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.015625, y: 1.015625}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.72037995, y: 4.110109}
-  m_EdgeRadius: 0
 --- !u!1 &1728330634
 GameObject:
   m_ObjectHideFlags: 0
@@ -2919,7 +2893,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a46cab8625b74bb4480964f2b8854a1e, type: 2}
   m_sharedMaterial: {fileID: 1355815013939339356, guid: a46cab8625b74bb4480964f2b8854a1e,
@@ -3293,7 +3267,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2063507063}
   m_Layer: 0
-  m_Name: Scenary
+  m_Name: ScenaryMiniJuego
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

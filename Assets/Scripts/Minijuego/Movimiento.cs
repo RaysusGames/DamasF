@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class Movimiento : MonoBehaviour
 {
    [SerializeField] protected float moveSpeed;
@@ -9,16 +9,18 @@ public class Movimiento : MonoBehaviour
     [SerializeField] protected GameObject bullet;
     [SerializeField] protected Transform aimPos;
     [SerializeField] protected float hp;
+    [SerializeField] protected TextMeshProUGUI hpText;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        hpText.SetText(hp.ToString(""));
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
     public float getHp()
     {
@@ -26,7 +28,9 @@ public class Movimiento : MonoBehaviour
     }
     public void setHp(float damage)
     {
-        this.hp = damage;
+        this.hp -= damage;
+        hpText.SetText(hp.ToString(""));
+
     }
     public Movimiento()
     {
