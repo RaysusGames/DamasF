@@ -44,4 +44,14 @@ public class BaseUnit : MonoBehaviour
     {
         this.faction = fact;
     }
+
+    public bool CheckPosibbleMove(int x, int y)
+    {
+        bool resp = false;
+        if (possibleMoves.Contains(new Vector2(x, y)))
+        {
+            resp = true;
+        }
+        return resp;
+    }
 }

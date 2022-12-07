@@ -54,6 +54,7 @@ public class Tile : MonoBehaviour
         {
             GridManager.instance.UnitArraund(xPos, yPos);
             //ocupiedUnit.ShowPossibleMove();
+
             //Si la unidad que estaocuapando el tile es del tipo ally
             if (ocupiedUnit.GetFaction()== Enums.Faction.Ally)
             {
@@ -69,25 +70,55 @@ public class Tile : MonoBehaviour
                     SetUnit(UnitManager.insatance.GetSelectedUnit());
                     UnitManager.insatance.SetSelectedUnit(null);
                 }
+                else
+                {
+
+                }
             }
         }
         else if(yourTurn)
         {
+            //Si tengo seleccionada una ficha
             if (UnitManager.insatance.GetSelectedUnit()!= null)
             {
-                if (isWalkeable)
+                //si el tile esta dentro de las possible moves
+                if (UnitManager.insatance.GetSelectedUnit().CheckPosibbleMove(xPos, yPos))
                 {
-                    TurnManager a = FindObjectOfType<TurnManager>();
-                    a.SetEndTurn(true);
+                    Debug.Log("SI SE PUEDE");
+                    if (isWalkeable)
+                    {
+                        TurnManager a = FindObjectOfType<TurnManager>();
+                        a.SetEndTurn(true);
 
-                    SetUnit(UnitManager.insatance.GetSelectedUnit());
-                    UnitManager.insatance.SetSelectedUnit(null);
+                        SetUnit(UnitManager.insatance.GetSelectedUnit());
+                        UnitManager.insatance.SetSelectedUnit(null);
 
+                    }
+                    else
+                    {
+                        UnitManager.insatance.SetSelectedUnit(null);
+                    }
                 }
                 else
                 {
+                    Debug.Log("NOP");
                     UnitManager.insatance.SetSelectedUnit(null);
                 }
+
+
+                //if (isWalkeable)
+                //{
+                //    TurnManager a = FindObjectOfType<TurnManager>();
+                //    a.SetEndTurn(true);
+
+                //    SetUnit(UnitManager.insatance.GetSelectedUnit());
+                //    UnitManager.insatance.SetSelectedUnit(null);
+
+                //}
+                //else
+                //{
+                //    UnitManager.insatance.SetSelectedUnit(null);
+                //}
             }
         }
 

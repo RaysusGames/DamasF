@@ -55,47 +55,6 @@ public class GridManager : MonoBehaviour
 
     public void UnitArraund(int x,int y)
     {
-        ////SUP IZQ
-        //if (IsInsideGrid(x-1,y+1)&&grid[x-1,y+1].GetComponent<BaseUnit>().GetOccupiedTile() != null && grid[x - 1, y + 1].GetComponent<BaseUnit>().GetFaction()== Enums.Faction.Enemy)
-        //{
-
-        //}
-        ////Mid Up
-        //if (IsInsideGrid(x , y + 1) && grid[x , y + 1].GetComponent<BaseUnit>().GetOccupiedTile() != null)
-        //{
-
-        //}
-        ////Sup Der
-        //if (IsInsideGrid(x + 1, y + 1) && grid[x + 1, y + 1].GetComponent<BaseUnit>().GetOccupiedTile() != null)
-        //{
-
-        //}
-        ////Mid DER
-        //if (IsInsideGrid(x + 1, y ) && grid[x + 1, y].GetComponent<BaseUnit>().GetOccupiedTile() != null)
-        //{
-
-        //}
-        //// Infe Der
-        //if (IsInsideGrid(x + 1, y - 1) && grid[x + 1, y - 1].GetComponent<BaseUnit>().GetOccupiedTile() != null)
-        //{
-
-        //}
-        //// Mid Down
-        //if (IsInsideGrid(x , y -1) && grid[x, y -1].GetComponent<BaseUnit>().GetOccupiedTile() != null)
-        //{
-
-        //}
-        ////Infe Izq
-        //if (IsInsideGrid(x - 1, y - 1) && grid[x - 1, y - 1].GetComponent<BaseUnit>().GetOccupiedTile() != null)
-        //{
-
-        //}
-        ////Mid Izq
-        //if (IsInsideGrid(x - 1, y ) && grid[x - 1, y ].GetComponent<BaseUnit>().GetOccupiedTile() != null)
-        //{
-
-        //}
-
         //SUP IZQ
         if (IsInsideGrid(x - 1, y + 1))
         {
@@ -112,8 +71,8 @@ public class GridManager : MonoBehaviour
                 grid[x, y].GetComponent<Tile>().GetOccupiedUnit().AddPosibleMove(new Vector2(x - 1, y + 1));
             }
         }
-        ////Mid Up
 
+        ////Mid Up
         if (IsInsideGrid(x , y + 1))
         {
             //Si la casilla esta ocupada por una ficha enemiga
@@ -130,11 +89,7 @@ public class GridManager : MonoBehaviour
             }
         }
 
-
-
-
         ////Sup Der
-
         if (IsInsideGrid(x+1, y + 1))
         {
             //Si la casilla esta ocupada por una ficha enemiga
@@ -168,14 +123,8 @@ public class GridManager : MonoBehaviour
             }
         }
 
-
-
-
-
         //// Infe Der
-
-
-        if (IsInsideGrid(x + 1, y))
+        if (IsInsideGrid(x + 1, y - 1))
         {
             //Si la casilla esta ocupada por una ficha enemiga
             if (grid[x + 1, y -1].GetComponent<Tile>().GetOccupiedUnit() != null && grid[x + 1, y - 1].GetComponent<Tile>().GetOccupiedUnit().GetFaction() == Enums.Faction.Enemy)
@@ -191,11 +140,8 @@ public class GridManager : MonoBehaviour
             }
         }
 
-
-
         //// Mid Down
-        ///
-        if (IsInsideGrid(x + 1, y))
+        if (IsInsideGrid(x, y - 1))
         {
             //Si la casilla esta ocupada por una ficha enemiga
             if (grid[x,y-1].GetComponent<Tile>().GetOccupiedUnit() != null && grid[x, y - 1].GetComponent<Tile>().GetOccupiedUnit().GetFaction() == Enums.Faction.Enemy)
@@ -211,11 +157,8 @@ public class GridManager : MonoBehaviour
             }
         }
 
-
-
         ////Infe Izq
-        ///
-        if (IsInsideGrid(x + 1, y))
+        if (IsInsideGrid(x - 1, y - 1))
         {
             //Si la casilla esta ocupada por una ficha enemiga
             if (grid[x-1, y - 1].GetComponent<Tile>().GetOccupiedUnit() != null && grid[x - 1, y - 1].GetComponent<Tile>().GetOccupiedUnit().GetFaction() == Enums.Faction.Enemy)
@@ -231,10 +174,8 @@ public class GridManager : MonoBehaviour
             }
         }
 
-
         ////Mid Izq
-        ///
-        if (IsInsideGrid(x + 1, y))
+        if (IsInsideGrid(x - 1, y))
         {
             //Si la casilla esta ocupada por una ficha enemiga
             if (grid[x - 1, y ].GetComponent<Tile>().GetOccupiedUnit() != null && grid[x - 1, y].GetComponent<Tile>().GetOccupiedUnit().GetFaction() == Enums.Faction.Enemy)
@@ -243,13 +184,12 @@ public class GridManager : MonoBehaviour
                 grid[x, y].GetComponent<Tile>().GetOccupiedUnit().AddPosibleMove(new Vector2(x - 2, y ) );
             }
             //Si la casiila esta vacia
-            else if (grid[x - 1, y - 1].GetComponent<Tile>().GetOccupiedUnit() == null)
+            else if (grid[x - 1, y ].GetComponent<Tile>().GetOccupiedUnit() == null)
             {
                 //Agregar posible movimiento de la ficha
                 grid[x, y].GetComponent<Tile>().GetOccupiedUnit().AddPosibleMove(new Vector2(x - 1, y));
             }
         }
-
     }
 
 
