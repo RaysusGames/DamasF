@@ -15,15 +15,22 @@ public class Tile : MonoBehaviour
     [SerializeField] protected int xPos;
     [SerializeField] protected int yPos;
 
+    [SerializeField] protected bool canHighLight;
+
     private void Start()
     {
         yourTurn = true;
-        player2On = false;   
+        player2On = false;
+        canHighLight = true;
     }
 
     public void ShowPosition()
     {
         Debug.Log(xPos + " " + yPos);
+    }
+    public void SetCanHighLight (bool t)
+    {
+        this.canHighLight = t;
     }
 
     public virtual void Tileinit(int x,int y)
@@ -47,6 +54,19 @@ public class Tile : MonoBehaviour
     {
         this.ocupiedUnit = unit;
     }
+    public void SetHighLightOn(bool on)
+    {
+         this.higtlight.SetActive(on);
+    }
+    public void HighLightON(bool on)
+    {
+        foreach (Vector2 v2 in ocupiedUnit.GetPosibleMove())
+        {
+            GridManager.instance.GetTile((int)v2.x, (int)v2.y).SetHighLightOn(on);
+            GridManager.instance.GetTile((int)v2.x, (int)v2.y).SetCanHighLight(!on);
+        }
+    }
+
     private void OnMouseDown()
     {  
         //Player1
@@ -60,11 +80,12 @@ public class Tile : MonoBehaviour
             {
                
                 UnitManager.insatance.SetSelectedUnit(ocupiedUnit);
+                HighLightON(true);
             }
             else
             {
                 //Si la unidad seleccionada es distinta de null
-                if (UnitManager.insatance.GetSelectedUnit() != null)
+               /* if (UnitManager.insatance.GetSelectedUnit() != null)
                 {
                     Destroy(ocupiedUnit.gameObject);
                     SetUnit(UnitManager.insatance.GetSelectedUnit());
@@ -73,7 +94,7 @@ public class Tile : MonoBehaviour
                 else
                 {
 
-                }
+                }*/
             }
         }
         else if(yourTurn)
@@ -91,17 +112,25 @@ public class Tile : MonoBehaviour
                         a.SetEndTurn(true);
 
                         SetUnit(UnitManager.insatance.GetSelectedUnit());
+                        HighLightON(false);
+                        UnitManager.insatance.GetSelectedUnit().GetPosibleMove().Clear();
                         UnitManager.insatance.SetSelectedUnit(null);
 
                     }
                     else
                     {
+                        HighLightON(false);
+                        UnitManager.insatance.GetSelectedUnit().GetPosibleMove().Clear();
+                        
                         UnitManager.insatance.SetSelectedUnit(null);
                     }
                 }
                 else
                 {
                     Debug.Log("NOP");
+                    HighLightON(false);
+                    UnitManager.insatance.GetSelectedUnit().GetPosibleMove().Clear();
+                   
                     UnitManager.insatance.SetSelectedUnit(null);
                 }
 
@@ -166,12 +195,22 @@ public class Tile : MonoBehaviour
     }
     private void OnMouseEnter()
     {
-        higtlight.SetActive(true);
+        if (canHighLight)
+        {
+            higtlight.SetActive(true);
+        }
+        
+        
     }
 
     private void OnMouseExit()
     {
-        higtlight.SetActive(false);
+        if (canHighLight)
+        {
+            higtlight.SetActive(false);
+        }
+       
+
     }
 
     public void SetUnit(BaseUnit unit)

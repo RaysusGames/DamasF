@@ -73,9 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6,
-    type: 3}
-  m_Color: {r: 0.9811321, g: 0.928563, b: 0.06016379, a: 0.5803922}
+  m_Sprite: {fileID: 21300000, guid: 5de6d7ed2aeba5b4a8e988d770474362, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -169,7 +168,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &6175318534246885074
@@ -188,6 +187,10 @@ MonoBehaviour:
   higtlight: {fileID: 1958070000395655349}
   ocupiedUnit: {fileID: 0}
   isWalkeable: 1
+  yourTurn: 0
+  player2On: 0
+  xPos: 0
+  yPos: 0
 --- !u!61 &4472297848055785063
 BoxCollider2D:
   m_ObjectHideFlags: 0
