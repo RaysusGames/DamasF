@@ -67,6 +67,7 @@ public class GridManager : MonoBehaviour
                
                 if (IsInsideGrid(x - 2, y + 2) && grid[x - 2, y + 2].GetComponent<Tile>().GetOccupiedUnit() == null)
                 {
+                    //AGREGO POSSIBLE MOVE PARA COMER FICHA ENEMIGA
                     grid[x, y].GetComponent<Tile>().GetOccupiedUnit().AddPosibleMove(new Vector2(x - 2, y + 2));
                 }
             }

@@ -60,41 +60,42 @@ public class Tile : MonoBehaviour
     }
     public void HighLightON(bool on)
     {
-        foreach (Vector2 v2 in ocupiedUnit.GetPosibleMove())
+        if (ocupiedUnit != null)
         {
-            GridManager.instance.GetTile((int)v2.x, (int)v2.y).SetHighLightOn(on);
-            GridManager.instance.GetTile((int)v2.x, (int)v2.y).SetCanHighLight(!on);
+            foreach (Vector2 v2 in ocupiedUnit.GetPosibleMove())
+            {
+                GridManager.instance.GetTile((int)v2.x, (int)v2.y).SetHighLightOn(on);
+                GridManager.instance.GetTile((int)v2.x, (int)v2.y).SetCanHighLight(!on);
+            }
         }
     }
 
     private void OnMouseDown()
     {  
         //Player1
+        //si se selecciona un tile con una ficha
         if (ocupiedUnit != null && yourTurn )
         {
             GridManager.instance.UnitArraund(xPos, yPos);
-            //ocupiedUnit.ShowPossibleMove();
 
-            //Si la unidad que estaocuapando el tile es del tipo ally
+            //Si la unidad que esta ocuapando el tile es del tipo ally
             if (ocupiedUnit.GetFaction()== Enums.Faction.Ally)
             {
-               
-                UnitManager.insatance.SetSelectedUnit(ocupiedUnit);
-                HighLightON(true);
-            }
-            else
-            {
-                //Si la unidad seleccionada es distinta de null
-               /* if (UnitManager.insatance.GetSelectedUnit() != null)
+                //si ya tengo seleccionada una ficha aliada
+                if (UnitManager.insatance.GetSelectedUnit() != null)
                 {
-                    Destroy(ocupiedUnit.gameObject);
-                    SetUnit(UnitManager.insatance.GetSelectedUnit());
-                    UnitManager.insatance.SetSelectedUnit(null);
+                    UnitManager.insatance.GetSelectedUnit().GetOccupiedTile().HighLightON(false);
+                    UnitManager.insatance.GetSelectedUnit().GetPosibleMove().Clear();
+                    UnitManager.insatance.SetSelectedUnit(ocupiedUnit);
+                    HighLightON(true);
                 }
                 else
                 {
+                    HighLightON(false);
+                    UnitManager.insatance.SetSelectedUnit(ocupiedUnit);
+                    HighLightON(true);
+                }
 
-                }*/
             }
         }
         else if(yourTurn)
@@ -105,9 +106,9 @@ public class Tile : MonoBehaviour
                 //si el tile esta dentro de las possible moves
                 if (UnitManager.insatance.GetSelectedUnit().CheckPosibbleMove(xPos, yPos))
                 {
-                    Debug.Log("SI SE PUEDE");
                     if (isWalkeable)
                     {
+                        Debug.Log("SI SE PUEDE WALKEABLE");
                         TurnManager a = FindObjectOfType<TurnManager>();
                         a.SetEndTurn(true);
 
@@ -115,39 +116,23 @@ public class Tile : MonoBehaviour
                         HighLightON(false);
                         UnitManager.insatance.GetSelectedUnit().GetPosibleMove().Clear();
                         UnitManager.insatance.SetSelectedUnit(null);
-
                     }
                     else
                     {
+                        Debug.Log("SI SE PUEDE ELSE");
                         HighLightON(false);
                         UnitManager.insatance.GetSelectedUnit().GetPosibleMove().Clear();
                         
                         UnitManager.insatance.SetSelectedUnit(null);
                     }
                 }
+                //si el tile NO esta dentro de las possible moves
                 else
                 {
-                    Debug.Log("NOP");
-                    HighLightON(false);
+                    UnitManager.insatance.GetSelectedUnit().GetOccupiedTile().HighLightON(false);
                     UnitManager.insatance.GetSelectedUnit().GetPosibleMove().Clear();
-                   
                     UnitManager.insatance.SetSelectedUnit(null);
                 }
-
-
-                //if (isWalkeable)
-                //{
-                //    TurnManager a = FindObjectOfType<TurnManager>();
-                //    a.SetEndTurn(true);
-
-                //    SetUnit(UnitManager.insatance.GetSelectedUnit());
-                //    UnitManager.insatance.SetSelectedUnit(null);
-
-                //}
-                //else
-                //{
-                //    UnitManager.insatance.SetSelectedUnit(null);
-                //}
             }
         }
 
@@ -184,7 +169,6 @@ public class Tile : MonoBehaviour
 
                     SetUnit(UnitManager.insatance.GetSelectedUnit());
                     UnitManager.insatance.SetSelectedUnit(null);
-
                 }
                 else
                 {
@@ -199,8 +183,6 @@ public class Tile : MonoBehaviour
         {
             higtlight.SetActive(true);
         }
-        
-        
     }
 
     private void OnMouseExit()
@@ -209,8 +191,6 @@ public class Tile : MonoBehaviour
         {
             higtlight.SetActive(false);
         }
-       
-
     }
 
     public void SetUnit(BaseUnit unit)
