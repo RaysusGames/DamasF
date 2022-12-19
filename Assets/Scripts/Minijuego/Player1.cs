@@ -8,6 +8,8 @@ public class Player1 : Movimiento
     {
         Move();
         Shoot();
+
+       
     }
     protected override void Move()
     {
@@ -16,11 +18,15 @@ public class Player1 : Movimiento
 
             rb.AddForce(new Vector2(0, 1) * moveSpeed * Time.deltaTime);
         }
+        
         if (Input.GetKey(KeyCode.S))
         {
             rb.AddForce(new Vector2(0, -1) * moveSpeed * Time.deltaTime);
         }
+     
     }
+
+  
 
 
     protected override void Shoot()

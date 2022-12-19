@@ -16,10 +16,12 @@ public class Player2 : Movimiento
 
             rb.AddForce(new Vector2(0, 1) * moveSpeed * Time.deltaTime);
         }
+       
         if (Input.GetKey(KeyCode.DownArrow))
         {
             rb.AddForce(new Vector2(0, -1) * moveSpeed * Time.deltaTime);
         }
+       
     }
 
 

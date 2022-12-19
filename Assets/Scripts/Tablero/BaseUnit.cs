@@ -8,9 +8,6 @@ public class BaseUnit : MonoBehaviour
     [SerializeField] protected Enums.Faction faction;
     [SerializeField] protected List<Vector2> possibleMoves;
 
-
-
-
     public void AddPosibleMove(Vector2 Posibility)
     {
         possibleMoves.Add(Posibility);

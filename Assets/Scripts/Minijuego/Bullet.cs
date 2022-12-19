@@ -22,12 +22,14 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("EnemyBullet"))
         {
-            collision.gameObject.GetComponent<Player2>().setHp(1);
+            collision.gameObject.GetComponent<Player2>().setDamage(1);
+            collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             Destroy(this.gameObject);
         }
         if (collision.gameObject.CompareTag("PlayerBullet"))
         {
-            collision.gameObject.GetComponent<Player1>().setHp(1);
+            collision.gameObject.GetComponent<Player1>().setDamage(1);
+            collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             Destroy(this.gameObject);
         }
     }

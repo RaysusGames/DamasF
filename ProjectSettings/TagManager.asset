@@ -8,6 +8,9 @@ TagManager:
   - EnemyBullet
   - Bup
   - BDown
+  - Missile
+  - Minijuego
+  - Canvas
   layers:
   - Default
   - TransparentFX

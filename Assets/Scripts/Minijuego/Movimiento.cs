@@ -4,12 +4,13 @@ using UnityEngine;
 using TMPro;
 public class Movimiento : MonoBehaviour
 {
-   [SerializeField] protected float moveSpeed;
-    [SerializeField] protected Rigidbody2D rb ;
+    [SerializeField] protected float moveSpeed;
+    [SerializeField] protected Rigidbody2D rb;
     [SerializeField] protected GameObject bullet;
     [SerializeField] protected Transform aimPos;
     [SerializeField] protected float hp;
     [SerializeField] protected TextMeshProUGUI hpText;
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -26,12 +27,20 @@ public class Movimiento : MonoBehaviour
     {
         return this.hp;
     }
-    public void setHp(float damage)
+    public void setDamage(float damage)
     {
         this.hp -= damage;
+        
         hpText.SetText(hp.ToString(""));
 
     }
+    public void SetHp(float hp)
+    {
+        this.hp = hp;
+        hpText.SetText(hp.ToString(""));
+    }
+
+  
     public Movimiento()
     {
         

@@ -69,6 +69,7 @@ public class GridManager : MonoBehaviour
                 {
                     //AGREGO POSSIBLE MOVE PARA COMER FICHA ENEMIGA
                     grid[x, y].GetComponent<Tile>().GetOccupiedUnit().AddPosibleMove(new Vector2(x - 2, y + 2));
+                    grid[x - 2, y + 2].GetComponent<Tile>().SetComer(new Vector2(x - 1, y + 1));
                 }
             }
             //Si la casiila esta vacia
@@ -90,6 +91,8 @@ public class GridManager : MonoBehaviour
                 if (IsInsideGrid(x, y + 2) && grid[x , y + 2].GetComponent<Tile>().GetOccupiedUnit() == null)
                 {
                     grid[x, y].GetComponent<Tile>().GetOccupiedUnit().AddPosibleMove(new Vector2(x, y + 2));
+                    grid[x, y + 2].GetComponent<Tile>().SetComer(new Vector2(x, y + 1));
+
                 }
             }
             //Si la casiila esta vacia
@@ -110,6 +113,7 @@ public class GridManager : MonoBehaviour
                 if (IsInsideGrid(x+2,y+2) && grid[x + 2, y + 2].GetComponent<Tile>().GetOccupiedUnit() == null)
                 {
                     grid[x, y].GetComponent<Tile>().GetOccupiedUnit().AddPosibleMove(new Vector2(x + 2, y + 2));
+                    grid[x + 2, y + 2].GetComponent<Tile>().SetComer(new Vector2(x + 1, y + 1));
                 }
                 
             }
@@ -131,6 +135,7 @@ public class GridManager : MonoBehaviour
                 if (IsInsideGrid(x + 2, y) && grid[x +2, y ].GetComponent<Tile>().GetOccupiedUnit() == null)
                 {
                     grid[x, y].GetComponent<Tile>().GetOccupiedUnit().AddPosibleMove(new Vector2(x + 2, y));
+                    grid[x + 2, y].GetComponent<Tile>().SetComer(new Vector2(x + 1, y));
                 }
                
             }
@@ -152,6 +157,7 @@ public class GridManager : MonoBehaviour
                 if (IsInsideGrid(x + 2, y - 2) && grid[x +2, y - 2].GetComponent<Tile>().GetOccupiedUnit() == null)
                 {
                     grid[x, y].GetComponent<Tile>().GetOccupiedUnit().AddPosibleMove(new Vector2(x + 2, y - 2));
+                    grid[x + 2, y - 2].GetComponent<Tile>().SetComer(new Vector2(x + 1, y - 1));
                 }
                
             }
@@ -173,8 +179,10 @@ public class GridManager : MonoBehaviour
                 if (IsInsideGrid(x, y - 2) && grid[x , y - 2].GetComponent<Tile>().GetOccupiedUnit() == null)
                 {
                     grid[x, y].GetComponent<Tile>().GetOccupiedUnit().AddPosibleMove(new Vector2(x, y - 2));
+                    grid[x, y - 2].GetComponent<Tile>().SetComer(new Vector2(x, y - 1));
+
                 }
-               
+
             }
             //Si la casiila esta vacia
             else if (grid[x, y - 1].GetComponent<Tile>().GetOccupiedUnit() == null)
@@ -194,8 +202,10 @@ public class GridManager : MonoBehaviour
                 if (IsInsideGrid(x - 2, y - 2) && grid[x - 2, y - 2].GetComponent<Tile>().GetOccupiedUnit() == null)
                 {
                     grid[x, y].GetComponent<Tile>().GetOccupiedUnit().AddPosibleMove(new Vector2(x - 2, y - 2));
+                    grid[x - 2, y - 2].GetComponent<Tile>().SetComer(new Vector2(x - 1, y - 1));
+
                 }
-              
+
             }
             //Si la casiila esta vacia
             else if (grid[x - 1, y - 1].GetComponent<Tile>().GetOccupiedUnit() == null)
@@ -215,6 +225,7 @@ public class GridManager : MonoBehaviour
                 if (IsInsideGrid(x - 2, y) && grid[x - 2, y].GetComponent<Tile>().GetOccupiedUnit() == null)
                 {
                     grid[x, y].GetComponent<Tile>().GetOccupiedUnit().AddPosibleMove(new Vector2(x - 2, y));
+                    grid[x - 2, y].GetComponent<Tile>().SetComer(new Vector2(x - 1, y));
                 }
               
             }

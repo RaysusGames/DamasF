@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    //
-
     [SerializeField] protected SpriteRenderer sRend;
     [SerializeField] protected GameObject higtlight;
     [SerializeField] protected BaseUnit ocupiedUnit;
@@ -17,13 +15,24 @@ public class Tile : MonoBehaviour
 
     [SerializeField] protected bool canHighLight;
 
+    [SerializeField] protected Vector2 comer;
+
+    [SerializeField] protected GameObject Minijuego;
+    [SerializeField] protected GameObject canvas;
+    //Test
+    
+
     private void Start()
     {
         yourTurn = true;
         player2On = false;
         canHighLight = true;
+        comer = new Vector2(999, 999);
+        Minijuego = GameObject.FindGameObjectWithTag("Minijuego");
+        canvas = GameObject.FindGameObjectWithTag("Canvas");
     }
 
+  
     public void ShowPosition()
     {
         Debug.Log(xPos + " " + yPos);
@@ -70,6 +79,11 @@ public class Tile : MonoBehaviour
         }
     }
 
+    public void SetComer(Vector2 v2)
+    {
+        this.comer = v2;
+    }
+
     private void OnMouseDown()
     {  
         //Player1
@@ -114,6 +128,24 @@ public class Tile : MonoBehaviour
 
                         SetUnit(UnitManager.insatance.GetSelectedUnit());
                         HighLightON(false);
+
+                        if (this.comer != new Vector2(999, 999))
+                        {
+                            //LLAMAR MINI JUEGO
+                            Minijuego.GetComponent<Animator>().SetBool("On", true);
+                            Minijuego.GetComponent<GameManagerMinijuego>().attackPLayer1 = true;
+                            Minijuego.GetComponent<GameManagerMinijuego>().attackPlayer2 = false;
+                            Minijuego.GetComponent<GameManagerMinijuego>().SetDefenderPosition(comer);
+                            canvas.SetActive(false);
+                            
+                            
+                                //DestroyFicha();
+                            
+                          
+
+
+                        }
+                        
                         UnitManager.insatance.GetSelectedUnit().GetPosibleMove().Clear();
                         UnitManager.insatance.SetSelectedUnit(null);
                     }
@@ -203,5 +235,13 @@ public class Tile : MonoBehaviour
         unit.transform.position = transform.position;
         this.ocupiedUnit = unit;
         unit.setOccupiedTile(this);
+    }
+
+    public void DestroyFicha()
+    {
+        Destroy(GridManager.instance.GetTile((int)comer.x, (int)comer.y).GetOccupiedUnit().gameObject);
+        GridManager.instance.GetTile((int)comer.x, (int)comer.y).SetOcccupiedUnit(null);
+        this.comer = new Vector2(999, 999);
+        
     }
 }

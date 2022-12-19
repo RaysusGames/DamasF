@@ -166,6 +166,9 @@ MonoBehaviour:
   xPos: 0
   yPos: 0
   canHighLight: 0
+  comer: {x: 0, y: 0}
+  Minijuego: {fileID: 0}
+  canvas: {fileID: 0}
   colorA: {fileID: 21300000, guid: c6a50c098c77881479d054ffa4fd24c0, type: 3}
   colorB: {fileID: 21300000, guid: ddd062d8c827d2140b575357b626e950, type: 3}
 --- !u!1001 &878245056758497878
@@ -254,6 +257,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5640336395202292684, guid: b872201db1e4282469291d0fbb31f187,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b872201db1e4282469291d0fbb31f187, type: 3}
