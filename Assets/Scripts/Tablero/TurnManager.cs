@@ -6,6 +6,8 @@ public class TurnManager : MonoBehaviour
 {
     [SerializeField] Tile[] tile;
     [SerializeField] protected bool endTurn;
+    [SerializeField] GameObject player1;
+    [SerializeField] GameObject player2;
 
     private void Start()
     {
@@ -24,6 +26,8 @@ public class TurnManager : MonoBehaviour
         {
             for (int i = 0; i < tile.Length; i++)
             {
+                player1.SetActive(true);
+                player2.SetActive(false);
                 tile[i].Setyourturn(false);
                 tile[i].Player2On(true);
             }
@@ -32,6 +36,8 @@ public class TurnManager : MonoBehaviour
         {
             for (int i = 0; i < tile.Length; i++)
             {
+                player1.SetActive(false);
+                player2.SetActive(true);
                 tile[i].Setyourturn(true);
                 tile[i].Player2On(false);
             }
