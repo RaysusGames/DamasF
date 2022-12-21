@@ -65,11 +65,13 @@ public class GameManager : MonoBehaviour
 
         if (NumAlly <= 0)
         {
-            Debug.Log("Win Player 2");
+            SceneManager.LoadScene("VictoryGosht");
+
         }
         if (NumEnemy <= 0)
         {
-            Debug.Log("Win Player 1");
+            SceneManager.LoadScene("VictoryMurcielago");
+
         }
     }
 

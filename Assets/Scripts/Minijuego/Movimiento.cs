@@ -10,6 +10,7 @@ public class Movimiento : MonoBehaviour
     [SerializeField] protected Transform aimPos;
     [SerializeField] protected float hp;
     [SerializeField] protected TextMeshProUGUI hpText;
+    [SerializeField] protected GameObject soundAndExploxion;
    
     // Start is called before the first frame update
     void Start()

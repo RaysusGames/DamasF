@@ -11,6 +11,8 @@ TagManager:
   - Missile
   - Minijuego
   - Canvas
+  - Bblanca
+  - Bnegra
   layers:
   - Default
   - TransparentFX

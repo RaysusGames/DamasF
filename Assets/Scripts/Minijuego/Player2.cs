@@ -30,6 +30,8 @@ public class Player2 : Movimiento
         if (Input.GetKeyDown(KeyCode.K))
         {
             Instantiate(bullet, aimPos.position, Quaternion.identity);
+            Instantiate(soundAndExploxion, aimPos.position, Quaternion.identity);
+
         }
 
     }

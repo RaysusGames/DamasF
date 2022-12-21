@@ -90,6 +90,7 @@ public class Tile : MonoBehaviour
         //si se selecciona un tile con una ficha
         if (ocupiedUnit != null && yourTurn )
         {
+            this.comer = new Vector2( 999,999);
             GridManager.instance.UnitArraund(xPos, yPos);
 
             //Si la unidad que esta ocuapando el tile es del tipo ally
@@ -131,17 +132,21 @@ public class Tile : MonoBehaviour
 
                         if (this.comer != new Vector2(999, 999))
                         {
+                           
+                          
+
                             //LLAMAR MINI JUEGO
                             Minijuego.GetComponent<Animator>().SetBool("On", true);
                             Minijuego.GetComponent<GameManagerMinijuego>().attackPLayer1 = true;
                             Minijuego.GetComponent<GameManagerMinijuego>().attackPlayer2 = false;
                             Minijuego.GetComponent<GameManagerMinijuego>().SetDefenderPosition(comer);
                             canvas.SetActive(false);
-                            
-                            
-                                //DestroyFicha();
-                            
-                          
+                           
+
+
+                             //DestroyFicha();
+
+
 
 
                         }
@@ -171,7 +176,7 @@ public class Tile : MonoBehaviour
 
         //player2
 
-        if (ocupiedUnit != null && player2On)
+     /*   if (ocupiedUnit != null && player2On)
         {
             //Si la unidad que estaocuapando el tile es del tipo ally
             if (ocupiedUnit.GetFaction() == Enums.Faction.Enemy)
@@ -207,6 +212,93 @@ public class Tile : MonoBehaviour
                     UnitManager.insatance.SetSelectedUnit(null);
                 }
             }
+        }*/
+
+
+
+        //Player2
+        //si se selecciona un tile con una ficha
+        if (ocupiedUnit != null && player2On)
+        {
+            this.comer = new Vector2(999, 999);
+            GridManager.instance.UnitArraundP2(xPos, yPos);
+
+            //Si la unidad que esta ocuapando el tile es del tipo ally
+            if (ocupiedUnit.GetFaction() == Enums.Faction.Enemy)
+            {
+                //si ya tengo seleccionada una ficha aliada
+                if (UnitManager.insatance.GetSelectedUnit() != null)
+                {
+                    UnitManager.insatance.GetSelectedUnit().GetOccupiedTile().HighLightON(false);
+                    UnitManager.insatance.GetSelectedUnit().GetPosibleMove().Clear();
+                    UnitManager.insatance.SetSelectedUnit(ocupiedUnit);
+                    HighLightON(true);
+                }
+                else
+                {
+                    HighLightON(false);
+                    UnitManager.insatance.SetSelectedUnit(ocupiedUnit);
+                    HighLightON(true);
+                }
+
+            }
+        }
+        else if (player2On)
+        {
+            //Si tengo seleccionada una ficha
+            if (UnitManager.insatance.GetSelectedUnit() != null)
+            {
+                //si el tile esta dentro de las possible moves
+                if (UnitManager.insatance.GetSelectedUnit().CheckPosibbleMove(xPos, yPos))
+                {
+                    if (isWalkeable)
+                    {
+                        Debug.Log("SI SE PUEDE WALKEABLE");
+                        TurnManager a = FindObjectOfType<TurnManager>();
+                        a.SetEndTurn(false);
+
+                        SetUnit(UnitManager.insatance.GetSelectedUnit());
+                        HighLightON(false);
+
+                        if (this.comer != new Vector2(999, 999))
+                        {
+                            //LLAMAR MINI JUEGO
+                            //DestroyFicha();
+                          
+                            Minijuego.GetComponent<Animator>().SetBool("On", true);
+                            Minijuego.GetComponent<GameManagerMinijuego>().attackPLayer1 = false;
+                            Minijuego.GetComponent<GameManagerMinijuego>().attackPlayer2 =true;
+                            Minijuego.GetComponent<GameManagerMinijuego>().SetDefenderPosition(comer);
+                            canvas.SetActive(false);
+                            
+
+                        
+
+
+
+
+                        }
+
+                        UnitManager.insatance.GetSelectedUnit().GetPosibleMove().Clear();
+                        UnitManager.insatance.SetSelectedUnit(null);
+                    }
+                    else
+                    {
+                        Debug.Log("SI SE PUEDE ELSE");
+                        HighLightON(false);
+                        UnitManager.insatance.GetSelectedUnit().GetPosibleMove().Clear();
+
+                        UnitManager.insatance.SetSelectedUnit(null);
+                    }
+                }
+                //si el tile NO esta dentro de las possible moves
+                else
+                {
+                    UnitManager.insatance.GetSelectedUnit().GetOccupiedTile().HighLightON(false);
+                    UnitManager.insatance.GetSelectedUnit().GetPosibleMove().Clear();
+                    UnitManager.insatance.SetSelectedUnit(null);
+                }
+            }
         }
     }
     private void OnMouseEnter()
@@ -239,9 +331,20 @@ public class Tile : MonoBehaviour
 
     public void DestroyFicha()
     {
-        Destroy(GridManager.instance.GetTile((int)comer.x, (int)comer.y).GetOccupiedUnit().gameObject);
-        GridManager.instance.GetTile((int)comer.x, (int)comer.y).SetOcccupiedUnit(null);
-        this.comer = new Vector2(999, 999);
+        Debug.Log(comer.x);
+        Debug.Log(comer.y);
         
+        
+            Destroy(GridManager.instance.GetTile((int)comer.x, (int)comer.y).GetOccupiedUnit().gameObject);
+            GridManager.instance.GetTile((int)comer.x, (int)comer.y).SetOcccupiedUnit(null);
+        
+      
+        
+        
+        this.comer = new Vector2(999, 999);
+      
+ 
     }
+
+    
 }
